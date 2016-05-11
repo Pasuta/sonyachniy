@@ -2008,16 +2008,16 @@ header .top-sect .help-box p {
 header .top-sect .help-box a {
   display: block;
   color: #21c2f8;
-  font-size: 43px;
-  font-weight: 800;
-  line-height: 45px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 25px;
   letter-spacing: -1px;
   position: relative;
   padding-left: 38px;
 }
 header .top-sect .help-box a:before {
   position: absolute;
-  content: "\f10b";
+  /*content: "\f10b";*/
   font-family: 'FontAwesome';
   font-weight: 400;
   font-size: 63px;

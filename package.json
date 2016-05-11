@@ -1,0 +1,30 @@
+{
+  "name": "sonyachniy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "co-body": "^4.2.0",
+    "co-views": "^2.1.0",
+    "koa": "^1.2.0",
+    "koa-logger": "^1.3.0",
+    "koa-render": "^0.2.1",
+    "koa-route": "^2.4.2",
+    "koa-static": "^2.0.0",
+    "swig": "^1.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pasuta/sonyachniy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pasuta/sonyachniy/issues"
+  },
+  "homepage": "https://github.com/Pasuta/sonyachniy#readme"
+}

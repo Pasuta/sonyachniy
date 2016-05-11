@@ -1,5 +1,5 @@
 function include(scriptUrl) {
-    scriptUrl = scriptUrl == '//maps.google.com/maps/api/js?sensor=false' ? '<script src="' + scriptUrl + '"></script>' : '<script src="/site/' + scriptUrl + '"></script>'
+    scriptUrl = scriptUrl == '//maps.google.com/maps/api/js?sensor=false' ? '<script src="' + scriptUrl + '"></script>' : '<script src="/site/' + scriptUrl + '"></script>';
     document.write(scriptUrl);
 }
 
