@@ -24,6 +24,7 @@ app.use(logger());
 //app.use(route.get('/', list));
 app.use(route.get('/', require('./controllers/site/index')));
 app.use(route.get('/contacts', require('./controllers/site/contacts')));
+app.use(route.get('/about', require('./controllers/site/about')));
 
 app.use(serve(__dirname + '/public'));
 
