@@ -98,47 +98,39 @@
         <div class="col-md-6 col-sm-12">
           <ul class="link-list wow fadeInLeft" data-wow-duration='3s'>
             <li>
-
-              <a href="#">Загальна інформація</a>
-
-              <a href="#" class="btn-link l-h1 fa-angle-right"></a>
-            </li>
-
-            <li>
-
-              <a href="#">Збираємо дитину в табір</a>
-
-              <a href="#" class="btn-link l-h1 fa-angle-right"></a>
+              <a href="/common">Загальна інформація</a>
+              <a href="/common" class="btn-link l-h1 fa-angle-right"></a>
             </li>
             <li>
-
-              <a href="#">Відправка дітей у табір</a>
-
-              <a href="#" class="btn-link l-h1 fa-angle-right"></a>
+              <a href="/childtocamp">Збираємо дитину в табір</a>
+              <a href="/childtocamp" class="btn-link l-h1 fa-angle-right"></a>
             </li>
             <li>
-
-              <a href="#">Режим дня в ДОТ "Сонячний"</a>
-
-              <a href="#" class="btn-link l-h1 fa-angle-right"></a>
+              <a href="/sendtocamp">Відправка дітей у табір</a>
+              <a href="/sendtocamp" class="btn-link l-h1 fa-angle-right"></a>
             </li>
             <li>
-
-              <a href="#">Побут та харчування в таборі</a>
-
-              <a href="#" class="btn-link l-h1 fa-angle-right"></a>
+              <a href="/daily">Режим дня в ДОТ "Сонячний"</a>
+              <a href="/daily" class="btn-link l-h1 fa-angle-right"></a>
             </li>
 
-            <li>
-
-              <a href="#">Відвідування дітей у таборі</a>
-
-              <a href="#" class="btn-link l-h1 fa-angle-right"></a>
-            </li>
           </ul>
         </div>
         <div class="col-md-6 col-sm-12">
-          <img class="width_img" src="/site/images/camp/children2.jpg" alt="">
+          <ul class="link-list wow fadeInLeft" data-wow-duration='3s'>
+            <li>
+              <a href="/eat">Побут та харчування в таборі</a>
+              <a href="/eat" class="btn-link l-h1 fa-angle-right"></a>
+            </li>
+            <li>
+              <a href="/visit">Відвідування дітей у таборі</a>
+              <a href="/visit" class="btn-link l-h1 fa-angle-right"></a>
+            </li>
+            <li>
+              <a href="/attention">Важлива інформація</a>
+              <a href="/attention" class="btn-link l-h1 fa-angle-right"></a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -165,40 +157,7 @@
 =========================================================-->
   <footer class="top-border">
 
-    <div class="map">
-      <div id="google-map" class="map_model" data-zoom="14"></div>
-      <ul class="map_locations">
-        <li data-x="34.5525797" data-y="49.5814095" data-basic="/site/images/gmap_marker.png" data-active="images/gmap_marker_active.png">
-          <div class="location">
-            <h3 class="txt-clr1">
-              Придбання
-              <small>
-                путівок
-              </small>
-            </h3>
-            <address>
-              <dl>
-                <dt>Телефон: </dt>
-                <dd class="phone"><a>(050)3235802; (097)8531793; (067)2987839</a></dd>
-              </dl>
-              <dl>
-                <dt>Адреса: </dt>
-                <dd>м. Полтава, пров. Шевченка, 20</dd>
-              </dl>
-              <dl>
-                <dt>Години: </dt>
-                <dd>з 9-00 до 18-00 будні</dd>
-              </dl>
-              <dl>
-                <dt> E-mail: </dt>
-                <dd><a href="mailto:#">info@info.org</a></dd>
-              </dl>
-            </address>
-
-          </div>
-        </li>
-      </ul>
-    </div>
+    {% include "./map.html" %}
 
     <section class="well1">
       <div class="container">

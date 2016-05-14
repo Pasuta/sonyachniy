@@ -9,39 +9,24 @@
 <main>
 
   <section>
-    <div class="map map_height1">
-      <div id="google-map" class="map_model" data-zoom="14"></div>
-      <ul class="map_locations">
-        <li data-x="34.5525797" data-y="49.5814095" data-basic="/site/images/gmap_marker.png" data-active="images/gmap_marker_active.png">
-          <div class="location">
-            <h3 class="txt-clr1">
-              BUSINESS
-              <small>
-                COMPANY
-              </small>
-            </h3>
-            <address>
-              <dl>
-                <dt>Free phone: </dt>
-                <dd class="phone"><a href="callto:#"> 800-2345-6789</a></dd>
-              </dl>
-              <dl>
-                <dt>Address: </dt>
-                <dd> 4578 Marmora Road,Glasgow D04 89GR</dd>
-              </dl>
-              <dl>
-                <dt>Hours: </dt>
-                <dd> 6am-4pm PST M-Th; &nbsp;&nbsp;  6am-3pm PST Fri</dd>
-              </dl>
-              <dl>
-                <dt> E-mail: </dt>
-                <dd><a href="mailto:#">info@demolink.org</a></dd>
-              </dl>
-            </address>
+    {% include "./map.html" %}
+  </section>
 
-          </div>
-        </li>
-      </ul>
+  <section class="well well2 bg1">
+    <div class="container">
+      <div class="row offs1">
+        <div class="col-md-6 col-sm-12 ti">
+          <p><b>Як доїхати  до табору</b></p>
+          <p> У табір можна доїхати на рейсовому автобусі  "Полтава - Михайлівка", який вирушає з автостанції Полтава-Київська (кінцева зупинка с. Михайлівка). 3 хвилини пішки по ходу автобуса - Ви біля центральних воріт табору.</p>
+        </div>
+        <div class="col-md-6 col-sm-12 ti">
+          <p><b>Придбання путівок:</b></p>
+          <p>м. Полтава, пров. Шевченка, 20</p>
+          <p>ФОП Сергієнко В.І.</p>
+          <p>Тел./факс (0532) 508-305;</p>
+          <p>(050)3235802; (097)8531793; (067)2987839.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -58,27 +43,27 @@
         <div class="contact-form-loader"></div>
         <fieldset>
           <label class="name">
-            <input type="text" name="name" placeholder="Ім'я:" value="" data-constraints="@Required @JustLetters"/>
+            <input type="text" name="name" placeholder="Ім'я:" value=""/>
             <span class="empty-message">*Це поле обов'язкове.</span>
             <span class="error-message">*Це не валідне ім'я.</span>
           </label>
 
           <label class="phone">
-            <input type="text" name="phone" placeholder="Телефон:" value="" data-constraints="@JustNumbers"/>
+            <input type="text" name="phone" placeholder="Телефон:" value=""/>
 
             <span class="empty-message">*Це поле обов'язкове.</span>
             <span class="error-message">*Це не валідний телефон.</span>
           </label>
 
           <label class="email">
-            <input type="text" name="email" placeholder="Email:" value="" data-constraints="@Required @Email"/>
+            <input type="text" name="email" placeholder="Email:"/>
 
             <span class="empty-message">*Це поле обов'язкове.</span>
             <span class="error-message">*Це не валідний email.</span>
           </label>
 
           <label class="message">
-            <textarea name="message" placeholder="Повідомлення" data-constraints='@Required @Length(min=20,max=999999)'></textarea>
+            <textarea name="message" placeholder="Повідомлення"></textarea>
 
             <span class="empty-message">*Це поле обов'язкове.</span>
             <span class="error-message">*Це поле закоротке (мін 20 знаків).</span>
