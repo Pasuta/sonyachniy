@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -10,12 +9,6 @@ var parse = require('co-body');
 var koa = require('koa');
 var app = koa();
 var serve = require('koa-static');
-
-// "database"
-
-var posts = [];
-
-// middleware
 
 app.use(logger());
 
