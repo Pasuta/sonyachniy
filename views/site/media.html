@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<!--========================================================
+                          CONTENT
+=========================================================-->
+<style>
+  .numbers{
+    width: 990px;
+    margin: 10px auto;
+  }
+  .numbers a{
+    display: block;
+    float: left;
+    cursor: pointer;
+    width: 196px;
+    height: 50px;
+    border: 1px solid silver;
+    text-align: center;
+    line-height: 45px;
+    font-size: 20px;
+  }
+  .numbers a:hover{
+    font-size: 21px;
+  }
+</style>
+
+<main>
+  <div class="numbers">
+    <a href="/media?page=1">1</a>
+    <a href="/media?page=2">2</a>
+    <a href="/media?page=3">3</a>
+    <a href="/media?page=4">4</a>
+    <a href="/media?page=5">5</a>
+    <br style="clear: both">
+  </div>
+
+  {% for post in posts %}
+    <section style="height: 650px" class="well well3 parallax" data-url="/site/images/photo/{{page}}{{post}}.jpg" data-mobile="true" data-speed="0.7"></section>
+  {% endfor %}
+
+
+  <div class="numbers">
+    <a href="/media?page=1">1</a>
+    <a href="/media?page=2">2</a>
+    <a href="/media?page=3">3</a>
+    <a href="/media?page=4">4</a>
+    <a href="/media?page=5">5</a>
+    <br style="clear: both">
+  </div>
+  <!--========================================================
+                        FOOTER
+=========================================================-->
+  <footer class="top-border">
+
+    <section class="well1">
+      <div class="container">
+        <p class="rights">
+          Всі права захищені  &#169; <span id="copyright-year"></span>
+          <a rel="nofollow" href="http://www.makesoft.org/" target="_blank">Makesoft - We Develop your Future</a>
+        </p>
+      </div>
+    </section>
+  </footer>
+
+</main>
+
+{% endblock %}

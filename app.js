@@ -10,7 +10,7 @@ var koa = require('koa');
 var app = koa();
 var serve = require('koa-static');
 
-app.use(logger());
+//app.use(logger());
 
 // route middleware
 
@@ -27,6 +27,8 @@ app.use(route.get('/eat', require('./controllers/site/eat')));
 app.use(route.get('/visit', require('./controllers/site/visit')));
 app.use(route.get('/attention', require('./controllers/site/attention')));
 
+app.use(route.get('/admin', require('./controllers/admin/index')));
+
 app.use(route.post('/mail', require('./controllers/site/mail')));
 
 app.use(function *pageNotFound(next){
@@ -41,7 +43,7 @@ app.use(function *pageNotFound(next){
     switch (this.accepts('html', 'json')) {
         case 'html':
             this.type = 'html';
-            this.body = yield render('404', { });
+            this.body = yield render.site('404', { });
             break;
         case 'json':
             this.body = {
