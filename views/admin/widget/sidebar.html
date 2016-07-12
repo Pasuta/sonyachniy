@@ -1,0 +1,60 @@
+{% block content %}
+    <div class="page-sidebar sidebar">
+        <div class="page-sidebar-inner slimscroll">
+            <div class="sidebar-header">
+                <div class="sidebar-profile">
+                    <a href="javascript:void(0);" id="profile-menu-link">
+                        <div class="sidebar-profile-image">
+                            <img src="/admin/images/admin.jpg" class="img-circle img-responsive" alt="">
+                        </div>
+                        <div class="sidebar-profile-details">
+                            <span>Ви зайшли як<br><small>Адмиiнiстратор</small></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <ul class="menu accordion-menu">
+                <li class="active">
+                    <a href="/admin/main" class="waves-effect waves-button">
+                        <span class="menu-icon glyphicon glyphicon-home"></span>
+                        <p>Головна</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/contact" class="waves-effect waves-button">
+                        <span class="menu-icon glyphicon glyphicon-user"></span>
+                        <p>Контакти</p>
+                    </a>
+                </li>
+                <li class="droplink">
+                    <a href="#" class="waves-effect waves-button">
+                        <span class="menu-icon glyphicon glyphicon-list"></span>
+                        <p>Для батьків</p>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="/admin/parents/common">Загальна інформація</a></li>
+                        <li><a href="/admin/parents/childtocamp">Збираємо дитину в табір</a></li>
+                        <li><a href="/admin/parents/sendtocamp">Відправка дітей у табір</a></li>
+                        <li><a href="/admin/parents/daily">Режим дня в ДОТ "Сонячний"</a></li>
+                        <li><a href="/admin/parents/eat">Побут та харчування в таборі</a></li>
+                        <li><a href="/admin/parents/visit">Відвідування дітей у таборі</a></li>
+                        <li><a href="/admin/parents/attention">Важлива інформація</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/admin/about" class="waves-effect waves-button">
+                        <span class="menu-icon glyphicon glyphicon-edit"></span>
+                        <p>Про нас</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/media" class="waves-effect waves-button">
+                        <span class="menu-icon glyphicon glyphicon-stats"></span>
+                        <p>Медіa</p>
+                    </a>
+                </li>
+            </ul>
+        </div><!-- Page Sidebar Inner -->
+    </div><!-- Page Sidebar -->
+{% endblock %}

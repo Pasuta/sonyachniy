@@ -1,0 +1,24 @@
+{
+    "title": {
+        "title": "title",
+        "type": "text",
+        "content": "ЛАСКАВО ПРОСИМО ДО ДИТЯЧОГО ОЗДОРОВЧОГО ТАБОРУ 'СОНЯЧНИЙ'!"
+    },
+    "mediatitle": {
+        "title": "mediatitle",
+        "type": "text",
+        "content": "ЛІТО, ДРУЗІ, РІЧКА ТА ЛІС"
+    },
+    "media1": {
+        "title": "media1",
+        "multiple": "false",
+        "type": "img",
+        "path": ""
+    },
+    "media2":{
+        "title": "media2",
+        "multiple": "false",
+        "type": "img",
+        "path": ""
+    }
+}
