@@ -1,12 +1,11 @@
 'use strict';
-// var parse = require('co-body');
+
 var parse = require('co-busboy');
-var os = require('os');
 var path = require('path');
 var fs = require('co-fs');
 var saveTo = require('save-to');
 
-module.exports = function *() {
+module.exports = function *(name) {
     // parse the multipart body
     var savedFile = '';
     var uuid = uid();
@@ -37,7 +36,10 @@ module.exports = function *() {
     // return all the filenames as an array
     // after all the files have finished downloading
     // console.log(savedFile);
-    this.body = savedFile;
+    this.body = yield {
+        "filepath": savedFile,
+        "name": name
+    };
 };
 
 function uid() {

@@ -9,6 +9,10 @@ var parse = require('co-body');
 var koa = require('koa');
 var app = koa();
 var serve = require('koa-static');
+
+app.use(serve(__dirname + '/public'));
+app.use(serve('sitemap.xml'));
+app.use(serve('robots.txt'));
 //app.use(logger());
 
 // route middleware
@@ -28,20 +32,12 @@ app.use(route.get('/attention', require('./controllers/site/attention')));
 
 app.use(route.get('/admin/login', require('./controllers/admin/login')));
 app.use(route.get('/admin', require('./controllers/admin/index')));
-app.use(route.get('/admin/main', require('./controllers/admin/main')));
-app.use(route.get('/admin/contact', require('./controllers/admin/contact')));
-app.use(route.get('/admin/parents/common', require('./controllers/admin/parentscommon')));
-app.use(route.get('/admin/parents/childtocamp', require('./controllers/admin/parentschildtocamp')));
-app.use(route.get('/admin/parents/sendtocamp', require('./controllers/admin/parentssendtocamp')));
-app.use(route.get('/admin/parents/daily', require('./controllers/admin/parentsdaily')));
-app.use(route.get('/admin/parents/eat', require('./controllers/admin/parentseat')));
-app.use(route.get('/admin/parents/visit', require('./controllers/admin/parentsvisit')));
-app.use(route.get('/admin/parents/attention', require('./controllers/admin/parentsattention')));
-app.use(route.get('/admin/about', require('./controllers/admin/about')));
-app.use(route.get('/admin/media', require('./controllers/admin/media')));
-
+app.use(route.get('/admin/main/:page', require('./controllers/admin/main')));
 app.use(route.post('/mail', require('./controllers/site/mail')));
-app.use(route.post('/upload', require('./controllers/admin/upload')));
+// app.use(route.post('/admin/login', require('./controllers/site/admin/login')));
+// app.use(route.post('/admin/logout', require('./controllers/site/admin/logout')));
+app.use(route.post('/upload/:name', require('./controllers/admin/upload')));
+
 app.use(route.post('/admin', require('./controllers/admin/admin')));
 app.use(function *pageNotFound(next){
     yield next;
@@ -68,7 +64,7 @@ app.use(function *pageNotFound(next){
     }
 });
 
-app.use(serve(__dirname + '/public'));
+
 
 app.listen(3001);
 console.log('listening on port 3001');

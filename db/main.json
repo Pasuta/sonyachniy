@@ -9,16 +9,28 @@
         "type": "text",
         "content": "ЛІТО, ДРУЗІ, РІЧКА ТА ЛІС"
     },
-    "media1": {
-        "title": "media1",
+    "children1": {
+        "title": "children1",
         "multiple": "false",
         "type": "img",
-        "path": ""
+        "path": "/site/images/camp/children10.jpg"
+    },
+    "children2": {
+        "title": "children2",
+        "multiple": "false",
+        "type": "img",
+        "path": "/site/images/camp/children7.jpg"
+    },
+    "children3": {
+        "title": "children3",
+        "multiple": "false",
+        "type": "img",
+        "path": "/site/images/camp/children5.jpg"
     },
     "media2":{
         "title": "media2",
         "multiple": "false",
         "type": "img",
-        "path": ""
+        "path": "/site/images/camp/children6.jpg"
     }
 }

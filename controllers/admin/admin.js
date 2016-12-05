@@ -5,11 +5,14 @@ var db = require('../../lib/db');
 
 module.exports = function *() {
     var post = yield parse(this);
-
     post = lib.convertToObject(post);
-    var content = db.parse(post.page);
-    console.log(post);
-    console.log(content);
+
+    for (var i in post) {
+        if (post.hasOwnProperty(i)) {
+            if(i == '' || i == 'page') continue;
+            db.save(post.page, i, post[i]);
+        }
+    }
 
     this.body = yield {"status": 200};
 };

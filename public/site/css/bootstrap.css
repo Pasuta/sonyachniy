@@ -8163,7 +8163,7 @@ button.close {
   top:75px;
   right:40px;
   display:none;
-  background: url('/site/images/arrow.png') 50% 50% no-repeat;
+  /*background: url('/site/images/arrow.png') 50% 50% no-repeat;*/
   background-size: contain;
 }
 .scrollToTop:hover{

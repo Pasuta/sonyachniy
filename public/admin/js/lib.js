@@ -10,7 +10,8 @@ function ajax(url, params, callback) {
 
     req.onload = function() {
         if (req.status == 200) {
-            callback(convertToObject(req.response));
+            // callback(convertToObject(req.response));
+            callback(req.response);
         } else {
             //reject(Error(req.statusText)); // TODO make error reporting
         }
@@ -20,8 +21,9 @@ function ajax(url, params, callback) {
         //reject(Error("Network error"))
     };
 
-    //var send = params instanceof window.FormData ? params : convertToString(params);
-    req.send(convertToString(params));
+    var send = params instanceof window.FormData ? params : convertToString(params);
+    // req.send(convertToString(params));
+    req.send(send);
 }
 
 function convertToString(arr) {
