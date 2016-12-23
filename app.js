@@ -29,6 +29,8 @@ app.use(route.get('/daily', require('./controllers/site/daily')));
 app.use(route.get('/eat', require('./controllers/site/eat')));
 app.use(route.get('/visit', require('./controllers/site/visit')));
 app.use(route.get('/attention', require('./controllers/site/attention')));
+app.use(route.get('/eating', require('./controllers/site/eating')));
+app.use(route.get('/medical', require('./controllers/site/medical')));
 
 app.use(route.get('/admin/login', require('./controllers/admin/login')));
 app.use(route.get('/admin', require('./controllers/admin/index')));
