@@ -1231,8 +1231,13 @@ th {
   font-weight: 900;
   font-size: 94px;
   line-height: 95px;
-  color: #ffffff;
+  color: #ffffff !important;
+  text-shadow: 0 0 10px rgba(0,0,0,0.5);
   text-transform: uppercase;
+}
+.parallax .wrap ul {
+  color: #ffffff !important;
+  text-shadow: 0 0 10px black;
 }
 .parallax .wrap strong small {
   display: block;
