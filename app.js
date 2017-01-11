@@ -1,19 +1,19 @@
 /**
  * Module dependencies.
  */
-var fs = require('fs');
-var render = require('./lib/render');
-var logger = require('koa-logger');
-var route = require('koa-route');
-var parse = require('co-body');
-var koa = require('koa');
-var app = koa();
-var serve = require('koa-static');
+const fs = require('fs');
+const render = require('./lib/render');
+const logger = require('koa-logger');
+const route = require('koa-route');
+const parse = require('co-body');
+const koa = require('koa');
+const app = koa();
+const serve = require('koa-static');
 
 app.use(serve(__dirname + '/public'));
 app.use(serve('sitemap.xml'));
 app.use(serve('robots.txt'));
-//app.use(logger());
+//app.use(logger());npm install mongoose
 
 // route middleware
 
