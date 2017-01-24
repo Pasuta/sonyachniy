@@ -30,6 +30,7 @@
 
     <script src="/admin/plugins/3d-bold-navigation/js/modernizr.js"></script>
     <script src="/admin/plugins/offcanvasmenueffects/js/snap.svg-min.js"></script>
+    <script src="/common/js/lib.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -46,16 +47,17 @@
             <div class="row">
                 <div class="col-md-3 center">
                     <div class="login-box">
-                        <a href="index.html" class="logo-name text-lg text-center">Сонячний</a>
+                        <a class="logo-name text-lg text-center">Сонячний</a>
                         <p class="text-center m-t-md">Будь ласка, увійдіть то адмінпанелі</p>
-                        <form class="m-t-md" action="index.html">
+                        <form class="m-t-md" id="login">
                             <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Email" required>
+                                <input type="email" id="email" class="form-control" placeholder="Email" required>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Пароль" required>
+                                <input type="password" id="password" class="form-control" placeholder="Пароль" required>
                             </div>
                             <button type="submit" class="btn btn-success btn-block">Увійти</button>
+                            <p style="color:red;visibility: hidden" id="message"></p>
                         </form>
                     </div>
                 </div>
@@ -66,6 +68,28 @@
 
 
 <!-- Javascripts -->
+<script>
+    var form = document.getElementById('login');
+    Event.add(form, 'submit', function (e) {
+        e.preventDefault();
+        var o = {
+            'email': document.getElementById('email').value,
+            'password': document.getElementById('password').value,
+        };
+
+        if (!o.email || !o.password) showMessage('Email або пароль не введені', 'show');
+        ajax('/admin/login', o).then(function (e, b) {
+            console.log(e,b);
+        });
+    });
+
+    function showMessage(message, status) {
+        var messageBlock = docuement.getElementById('message');
+        messageBlock.innerHTML = message;
+        if (status == 'show') messageBlock.style.visibility = 'visible';
+        if (status == 'hide') messageBlock.style.visibility = 'hidden';
+    }
+</script>
 <script src="/admin/plugins/jquery/jquery-2.1.4.min.js"></script>
 <script src="/admin/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="/admin/plugins/pace-master/pace.min.js"></script>
@@ -77,8 +101,6 @@
 <script src="/admin/plugins/offcanvasmenueffects/js/classie.js"></script>
 <script src="/admin/plugins/waves/waves.min.js"></script>
 <script src="/admin/js/modern.min.js"></script>
-<script>
 
-</script>
 </body>
 </html>
