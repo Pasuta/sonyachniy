@@ -1,7 +1,7 @@
 var Config = {};
 
 Config.all = {
-  port: 9002,
+  port: 3001,
   routes: [
     'index',
     'heartbeat',
