@@ -31,7 +31,7 @@ module.exports = function *() {
     text += '. Email: ' + post.email;
     text += '. Повідомлення: ' + post.message;
 
-    send(text, post.email, " s_tabir2016@ukr.net", "Заявка на сайті sonyachniy.com.ua");
+    send(text, post.email, "s_tabir2016@ukr.net", "Заявка на сайті sonyachniy.com.ua");
     //send(text, post.email, "pasutavitaliy@gmail.com", "Заявка на сайті sonyachniy.com.ua");
 
     this.body = yield {"status": 200};

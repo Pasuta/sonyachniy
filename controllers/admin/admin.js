@@ -1,11 +1,15 @@
 'use strict';
 var parse = require('co-body');
-var lib = require('../../public/admin/js/lib.js');
+// var lib = require('../../public/admin/js/lib.js');
 var db = require('../../lib/db');
+const helpers = require('../../lib/helpers');
 
-module.exports = function *() {
+module.exports = function *(next) {
+    yield next;
+    console.log(2);
+    console.log(this);
     var post = yield parse(this);
-    post = lib.convertToObject(post);
+    post = helpers.convertToObject(post);
 
     for (var i in post) {
         if (post.hasOwnProperty(i)) {

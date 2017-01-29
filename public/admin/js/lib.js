@@ -21,9 +21,9 @@ function ajax(url, params, callback) {
         //reject(Error("Network error"))
     };
 
-    var send = params instanceof window.FormData ? params : convertToString(params);
-    // req.send(convertToString(params));
-    req.send(send);
+    // var send = params instanceof window.FormData ? params : convertToString(params);
+    req.send(convertToString(params));
+    // req.send(params);
 }
 
 function convertToString(arr) {

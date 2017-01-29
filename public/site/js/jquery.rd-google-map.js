@@ -141,7 +141,7 @@
         defaults = {
             map: {
                 x: 34.5525797,
-                y: 49.5814095,
+                y: 49.69,
                 zoom: 14
             },
             locations: []

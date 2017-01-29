@@ -1,6 +1,8 @@
+'use strict';
 var render = require('../../lib/render');
 
-module.exports = function *() {
-    var posts = [];
-    this.body = yield render.admin('index', { posts: posts });
+module.exports = function *(next) {
+    yield next;
+    console.log(2);
+    this.body = yield render.admin('index');
 };

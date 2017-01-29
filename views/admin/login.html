@@ -30,7 +30,8 @@
 
     <script src="/admin/plugins/3d-bold-navigation/js/modernizr.js"></script>
     <script src="/admin/plugins/offcanvasmenueffects/js/snap.svg-min.js"></script>
-    <script src="/common/js/lib.js"></script>
+    <script src="/admin/js/lib.js"></script>
+    <!--<script src="/common/js/lib.js"></script>-->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -74,17 +75,18 @@
         e.preventDefault();
         var o = {
             'email': document.getElementById('email').value,
-            'password': document.getElementById('password').value,
+            'password': document.getElementById('password').value
         };
 
         if (!o.email || !o.password) showMessage('Email або пароль не введені', 'show');
-        ajax('/admin/login', o).then(function (e, b) {
-            console.log(e,b);
+        ajax('/admin/login', o, function(e) {
+            e = JSON.parse(e);
+            e.status == 500 ? showMessage(e.text, 'show') : window.location.href = '/admin';
         });
     });
 
     function showMessage(message, status) {
-        var messageBlock = docuement.getElementById('message');
+        var messageBlock = document.getElementById('message');
         messageBlock.innerHTML = message;
         if (status == 'show') messageBlock.style.visibility = 'visible';
         if (status == 'hide') messageBlock.style.visibility = 'hidden';

@@ -1,5 +1,4 @@
 'use strict';
-const fs = require('fs');
 const logger = require('koa-logger');
 const koa = require('koa');
 const app = koa();
@@ -19,5 +18,7 @@ require('./routes/site')(app);
 require('./routes/admin')(app);
 
 app.use(require('./middlewares/page404'));
+app.use(require('./middlewares/auth'));
+
 app.listen(configurator.get('app', 'port'));
 console.log(`listening on port ${configurator.get('app', 'port')}`);
