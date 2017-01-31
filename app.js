@@ -5,9 +5,9 @@ const app = koa();
 const mongoose = require('mongoose');
 const serve = require('koa-static');
 const configurator = require('./modules/configurator');
-// const dbConfig = configurator.get('db');
+const dbConfig = configurator.get('db');
 
-// mongoose.connect(`mongodb://${dbConfig.host}/${dbConfig.name}`);
+mongoose.connect(`mongodb://${dbConfig.host}/${dbConfig.name}`);
 
 app.use(serve(__dirname + '/public'));
 app.use(serve('sitemap.xml'));

@@ -61,40 +61,40 @@
 </div><!-- Page Inner -->
 
 <script>
-    var form = document.getElementById('form');
-    Event.add(form, 'submit', function (e) {
-        e.preventDefault();
-        var data = collectFormData(form);
-        ajax('/admin', data, function (e) {
-            window.location.reload();
-        });
-    });
-
-    var imgRelations = document.getElementsByClassName('imgRelations');
-    for (var i = 0; i < imgRelations.length; i++) {
-        var imgbtn = imgRelations[i];
-        Event.add(imgbtn, 'change', function (e) {
-            e.preventDefault();
-
-            var formData = new FormData();
-            var files = this.files;
-            var name = this.name;
-            for (var obj in files) {
-                if(files.hasOwnProperty(obj) && typeof files[obj] == 'object'){
-                    formData.append(name, files[obj]);
-                }
-            }
-
-            ajax('/upload/' + name, formData, function(d) {
-                d = JSON.parse(d);
-                var img = document.getElementsByClassName('photoAFphoto_' + d.name)[0];
-                img.style.background = '"url (/upload/' + d.filepath + '") no-repeat';
-                img.style.backgroundSize = 'contain';
-                img.style.backgroundPosition = 'center';
-            });
-
-        });
-    }
+//    var form = document.getElementById('form');
+//    Event.add(form, 'submit', function (e) {
+//        e.preventDefault();
+//        var data = collectFormData(form);
+//        ajax('/admin', data, function (e) {
+//            window.location.reload();
+//        });
+//    });
+//
+//    var imgRelations = document.getElementsByClassName('imgRelations');
+//    for (var i = 0; i < imgRelations.length; i++) {
+//        var imgbtn = imgRelations[i];
+//        Event.add(imgbtn, 'change', function (e) {
+//            e.preventDefault();
+//
+//            var formData = new FormData();
+//            var files = this.files;
+//            var name = this.name;
+//            for (var obj in files) {
+//                if(files.hasOwnProperty(obj) && typeof files[obj] == 'object'){
+//                    formData.append(name, files[obj]);
+//                }
+//            }
+//
+//            ajax('/upload/' + name, formData, function(d) {
+//                d = JSON.parse(d);
+//                var img = document.getElementsByClassName('photoAFphoto_' + d.name)[0];
+//                img.style.background = '"url (/upload/' + d.filepath + '") no-repeat';
+//                img.style.backgroundSize = 'contain';
+//                img.style.backgroundPosition = 'center';
+//            });
+//
+//        });
+//    }
 </script>
 
 
