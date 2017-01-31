@@ -9,8 +9,9 @@ module.exports = function(app) {
     app.use(route.get('/admin/content/:page', require('../controllers/admin/page')));
     app.use(route.get('/admin/logout', require('../controllers/admin/auth/logout')));
 
+    app.use(route.post('/admin/updatePage', require('../controllers/admin/updatePage')));
+
     app.use(route.post('/admin/login', require('../controllers/admin/auth/login')));
     app.use(route.post('/mail', require('../controllers/site/mail')));
     app.use(route.post('/upload/:name', require('../controllers/admin/upload')));
-    app.use(route.post('/admin', require('../controllers/admin/admin')));
 };

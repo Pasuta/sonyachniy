@@ -1,7 +1,6 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-
 <div class="page-inner">
 
     <div id="main-wrapper">
@@ -10,40 +9,31 @@
             <div class="col-md-12">
                 <div class="panel panel-white">
                     <div class="panel-heading clearfix">
-                        <h4 class="panel-title">Головна</h4>
+                        <h4 class="panel-title">{{doc.title}}</h4>
                     </div>
                     <div class="panel-body">
-                        <form class="form-horizontal" id="form" method="post" action="/admin">
+                        <form class="form-horizontal" id="form" method="post" action="/admin/updatePage">
 
                             <input name="page" value="{{page}}" type="hidden">
+                            <input name="textLeft" value="{{textLeft}}" type="hidden">
+                            <input name="textRight" value="{{textRight}}" type="hidden">
 
                             <div class="row">
-                                {% for c in content %}
 
-                                {% if c.type == 'text' %}
-                                <div class="form-group editableBlock" data-title="{{c.title}}">
-                                    <label class="col-sm-2 control-label">{{c.title}}</label>
+                                <div class="form-group editableBlock">
+                                    <label class="col-sm-2 control-label">Текст ліва частина</label>
                                     <div class="col-sm-10">
-                                        <div class="summernote">{{ c.content }}</div>
+                                        <div class="summernote">{{ c.textLeft }}</div>
                                     </div>
                                 </div>
-                                {% endif %}
 
-                                {% if c.type == 'img' %}
-                                <div class="col-sm-10 photoAF uploadedBlock">
-                                    <div class="photoAFphoto photoAFphoto_{{c.title}}" style='background: url({{c.path}}) no-repeat;background-size:contain;background-position:center'></div>
-                                    <div class="photoAFdesc">
-                                        <div class="loadImgBtn">
-                                            Завантажити
-                                            <input class="imgRelations" type="file" name="{{c.title}}">
-                                        </div>
-                                        <br class="clear">
+                                <div class="form-group editableBlock" data-title="{{doc.textLeft}}">
+                                    <label class="col-sm-2 control-label">Текст права частина</label>
+                                    <div class="col-sm-10">
+                                        <div class="summernote">{{ c.textRight }}</div>
                                     </div>
                                 </div>
-                                <br class="clear">
-                                {% endif %}
 
-                                {% endfor %}
                             </div>
 
 
@@ -53,50 +43,29 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-12">
+                <div class="panel panel-white">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Dropzone</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form action="/file-upload" class="dropzone">
+                            <div class="fallback">
+                                <input name="file" type="file" multiple />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
         </div><!-- Row -->
     </div><!-- Main Wrapper -->
+
     <div class="page-footer">
         <p class="no-s">2016 &copy; Сонячний.</p>
     </div>
 </div><!-- Page Inner -->
-
-<script>
-//    var form = document.getElementById('form');
-//    Event.add(form, 'submit', function (e) {
-//        e.preventDefault();
-//        var data = collectFormData(form);
-//        ajax('/admin', data, function (e) {
-//            window.location.reload();
-//        });
-//    });
-//
-//    var imgRelations = document.getElementsByClassName('imgRelations');
-//    for (var i = 0; i < imgRelations.length; i++) {
-//        var imgbtn = imgRelations[i];
-//        Event.add(imgbtn, 'change', function (e) {
-//            e.preventDefault();
-//
-//            var formData = new FormData();
-//            var files = this.files;
-//            var name = this.name;
-//            for (var obj in files) {
-//                if(files.hasOwnProperty(obj) && typeof files[obj] == 'object'){
-//                    formData.append(name, files[obj]);
-//                }
-//            }
-//
-//            ajax('/upload/' + name, formData, function(d) {
-//                d = JSON.parse(d);
-//                var img = document.getElementsByClassName('photoAFphoto_' + d.name)[0];
-//                img.style.background = '"url (/upload/' + d.filepath + '") no-repeat';
-//                img.style.backgroundSize = 'contain';
-//                img.style.backgroundPosition = 'center';
-//            });
-//
-//        });
-//    }
-</script>
-
 
 <!-- Javascripts -->
 <script src="/admin/plugins/jquery/jquery-2.1.4.min.js"></script>
@@ -119,10 +88,10 @@
 <script src="/admin/js/modern.min.js"></script>
 <script src="/admin/js/pages/form-elements.js"></script>
 <script src="/admin/js/pages/form-plupload.js"></script>
-<!--<script src="/admin/plugins/dropzone/dropzone.min.js"></script>-->
-<!--<script src="/admin/plugins/dropzone/dz.js"></script>-->
-<!--<script src="/admin/plugins/plupload/js/plupload.full.min.js"></script>-->
-<!--<script src="/admin/plugins/plupload/js/jquery.plupload.queue/jquery.plupload.queue.min.js"></script>-->
-<!--<script src="/admin/plugins/plupload/js/jquery.plupload.queue/jquery.plupload.queue.js"></script>-->
+<script src="/admin/plugins/dropzone/dropzone.min.js"></script>
+<script src="/admin/plugins/dropzone/dz.js"></script>
+<script src="/admin/plugins/plupload/js/plupload.full.min.js"></script>
+<script src="/admin/plugins/plupload/js/jquery.plupload.queue/jquery.plupload.queue.min.js"></script>
+<script src="/admin/plugins/plupload/js/jquery.plupload.queue/jquery.plupload.queue.js"></script>
 
 {% endblock %}
