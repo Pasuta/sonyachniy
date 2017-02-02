@@ -23,14 +23,14 @@
                                 <div class="form-group editableBlock">
                                     <label class="col-sm-2 control-label">Текст ліва частина</label>
                                     <div class="col-sm-10">
-                                        <div class="summernote">{{ c.textLeft }}</div>
+                                        <div class="summernote" id="textLeft">{{ doc.textLeft }}</div>
                                     </div>
                                 </div>
 
                                 <div class="form-group editableBlock" data-title="{{doc.textLeft}}">
                                     <label class="col-sm-2 control-label">Текст права частина</label>
                                     <div class="col-sm-10">
-                                        <div class="summernote">{{ c.textRight }}</div>
+                                        <div class="summernote" id="textRight">{{ doc.textRight }}</div>
                                     </div>
                                 </div>
 
@@ -44,20 +44,20 @@
                 </div>
             </div>
 
-            <div class="col-md-12">
-                <div class="panel panel-white">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Dropzone</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form action="/file-upload" class="dropzone">
-                            <div class="fallback">
-                                <input name="file" type="file" multiple />
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            <!--<div class="col-md-12">-->
+                <!--<div class="panel panel-white">-->
+                    <!--<div class="panel-heading">-->
+                        <!--<h3 class="panel-title">Dropzone</h3>-->
+                    <!--</div>-->
+                    <!--<div class="panel-body">-->
+                        <!--<form action="/file-upload" class="dropzone">-->
+                            <!--<div class="fallback">-->
+                                <!--<input name="file" type="file" multiple />-->
+                            <!--</div>-->
+                        <!--</form>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
 
         </div><!-- Row -->
     </div><!-- Main Wrapper -->
@@ -93,5 +93,26 @@
 <script src="/admin/plugins/plupload/js/plupload.full.min.js"></script>
 <script src="/admin/plugins/plupload/js/jquery.plupload.queue/jquery.plupload.queue.min.js"></script>
 <script src="/admin/plugins/plupload/js/jquery.plupload.queue/jquery.plupload.queue.js"></script>
+
+<script>
+    $('#form').submit(function(e) {
+        e.preventDefault();
+        // get all the inputs into an array.
+        var $inputs = $('#form :input');
+
+        // not sure if you wanted this, but I thought I'd add it.
+        // get an associative array of just the values.
+        var values = {};
+        $inputs.each(function() {
+            values[this.name] = $(this).val();
+        });
+
+        var textLeft = $('#textLeft').summernote('code');
+        var textRight = $('#textRight').summernote('code');
+
+        console.log(values);
+        console.log(textRight);
+    });
+</script>
 
 {% endblock %}

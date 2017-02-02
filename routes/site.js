@@ -16,4 +16,6 @@ module.exports = function(app) {
   app.use(route.get('/eating', require('../controllers/site/eating')));
   app.use(route.get('/medical', require('../controllers/site/medical')));
   app.use(route.get('/jobs', require('../controllers/site/jobs')));
+  app.use(route.get('/rules', require('../controllers/site/rules')));
+  app.use(route.get('/rulesComein', require('../controllers/site/rulesComein')));
 };
