@@ -48,7 +48,7 @@
                         'class': settings.toggleClass
                     }).append($('<span/>')))
                     .append($('<h2/>', {
-                        'class': settings.titleClass                        
+                        'class': settings.titleClass
                     }).append($('[data-type="rd-navbar-brand"]').length? $('[data-type="rd-navbar-brand"]').html() : document.title))
                     );
         },

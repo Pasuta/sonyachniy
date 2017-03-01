@@ -387,7 +387,7 @@ var o = $('#camera');
 
         $(document).ready(function () {
             o.camera({
-                autoAdvance: false,
+                autoAdvance: true,
                 height: '29.75609756097561%',
                 minHeight: '350px',
                 pagination: true,
@@ -398,6 +398,8 @@ var o = $('#camera');
                 navigation: false,
                 navigationHover: false,
                 mobileNavHover: false,
+                time: 3000,
+                transPeriod: 1500,
                 fx: 'simpleFade'
             })
         });
@@ -412,7 +414,7 @@ var o = $('#camera');
     if (o.length > 0) {
         include('js/TMSearch.js');
     }
-})(jQuery);  
+})(jQuery);
 
 
 
@@ -425,7 +427,7 @@ var o = $('#camera');
     var o = $('#contact-form');
     if (o.length > 0) {
         include('js/modal.js');
-        include('js/TMForm.js'); 
+        include('js/TMForm.js');
 
         if($('#contact-form .recaptcha').length > 0){
             include('//www.google.com/recaptcha/api/js/recaptcha_ajax.js');
@@ -452,7 +454,4 @@ var o = $('#camera');
 =============================================*/
 ;(function ($) {
     include('js/jquery.rd-parallax.js');
-})(jQuery); 
-
-
-
+})(jQuery);

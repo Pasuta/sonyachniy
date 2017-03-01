@@ -6389,7 +6389,7 @@ a.badge:focus {
   position: absolute;
   left: 21.4%;
   top: 49.5%;
-  max-width: 580px;
+  max-width: 1000px;
 }
 .jumbotron em {
   text-transform: uppercase;
