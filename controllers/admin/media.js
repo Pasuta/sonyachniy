@@ -1,6 +1,8 @@
-var render = require('../../lib/render');
+const render = require('../../lib/render');
+const Promise = require("bluebird");
+const Album = Promise.promisifyAll(require('../../models/album'));
 
 module.exports = function *() {
-    var posts = [];
-    this.body = yield render.admin('index', { posts: posts });
+    const albums = yield Album.findAsync();
+    this.body = yield render.admin('media', { albums: albums});
 };
