@@ -1,8 +1,8 @@
 'use strict';
 const parse = require('co-body');
 const Promise = require("bluebird");
-const helpers = require('../../lib/helpers');
-const Album = require('../../models/album');
+const helpers = require('../../../lib/helpers');
+const Album = require('../../../models/album');
 
 module.exports = function *() {
 

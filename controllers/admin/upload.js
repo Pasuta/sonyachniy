@@ -4,6 +4,7 @@ var parse = require('co-busboy');
 var path = require('path');
 var fs = require('co-fs');
 var saveTo = require('save-to');
+const appDir = path.dirname(require.main.filename);
 
 module.exports = function *(name) {
     // parse the multipart body
@@ -14,7 +15,7 @@ module.exports = function *(name) {
     });
 
     // create a temporary folder to store files
-    var tmpdir = path.join(__dirname + "../../../public/upload", uuid);
+    var tmpdir = path.join(appDir, 'media', uid());
 
     // make the temporary directory
     yield fs.mkdir(tmpdir);

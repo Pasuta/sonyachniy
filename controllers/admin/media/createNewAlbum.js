@@ -1,4 +1,4 @@
-const render = require('../../lib/render');
+const render = require('../../../lib/render');
 
 module.exports = function *() {
     const posts = [];
