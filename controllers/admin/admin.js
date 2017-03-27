@@ -6,8 +6,6 @@ const helpers = require('../../lib/helpers');
 
 module.exports = function *(next) {
     yield next;
-    console.log(2);
-    console.log(this);
     var post = yield parse(this);
     post = helpers.convertToObject(post);
 
