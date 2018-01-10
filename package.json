@@ -12,6 +12,9 @@
     "koa-route": "2.4.2",
     "koa-static": "2.0.0",
     "mongoose": "4.7.6",
+    "co-busboy": "1.4.0",
+    "co-fs": "1.2.0",
+    "save-to": "1.0.3",
     "swig": "1.4.2"
   },
   "devDependencies": {},

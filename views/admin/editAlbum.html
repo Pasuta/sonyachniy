@@ -46,7 +46,7 @@
                                     <h3 class="panel-title">Upload photo</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <form action="/admin/media/uploadMedia" id="uploadPhoto">
+                                    <form action="/admin/media/uploadMedia" id="uploadPhoto" method="post">
                                         <div class="fallback">
                                             <input name="file" type="file" multiple />
                                         </div>
@@ -93,24 +93,24 @@
     $(document).ready(function() {
         $('.date-picker').datepicker("update", new Date($("#date").val()));
     });
-
-    var uploadPhoto = document.getElementById('uploadPhoto');
-    Event.add(uploadPhoto, 'submit', function (e) {
-        e.preventDefault();
-
-        var formData = new FormData();
-        var files = this.files;
-        var name = this.name;
-        for (var obj in files) {
-            if(files.hasOwnProperty(obj) && typeof files[obj] == 'object'){
-                formData.append(name, files[obj]);
-            }
-        }
-
-        console.log(formData);
-        ajax('/admin/media/uploadMedia', formData, function(d) {
-            console.log(d);
-        });
-    })
+//
+//    var uploadPhoto = document.getElementById('uploadPhoto');
+//    Event.add(uploadPhoto, 'submit', function (e) {
+//        e.preventDefault();
+//
+//        var formData = new FormData();
+//        var files = this.files;
+//        var name = this.name;
+//        for (var obj in files) {
+//            if(files.hasOwnProperty(obj) && typeof files[obj] == 'object'){
+//                formData.append(name, files[obj]);
+//            }
+//        }
+//
+//        console.log(formData);
+//        ajax('/admin/media/uploadMedia', formData, function(d) {
+//            console.log(d);
+//        });
+//    })
 </script>
 {% endblock %}

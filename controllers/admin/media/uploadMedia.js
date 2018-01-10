@@ -8,12 +8,12 @@ const appDir = path.dirname(require.main.filename);
 
 
 module.exports = function *() {
-    console.log(1);
-    var parts = parse(this, {
-        autoFields: true // saves the fields to parts.field(s)
-    });
-
-    console.log(parts);
+    console.log('x');
+    // var parts = parse(this, {
+    //     autoFields: true // saves the fields to parts.field(s)
+    // });
+    //
+    // console.log(parts);
     // parse the multipart body
     // var savedFile = '';
     // var uuid = uid();
@@ -27,15 +27,19 @@ module.exports = function *() {
     // // make the temporary directory
     // yield fs.mkdir(tmpdir);
     //
+    // console.log(1);
     // // list of all the files
     // var files = [];
     // var file;
     //
     // // yield each part as a stream
     // var part;
+    // console.log(2);
+    // console.log(parts);
     // while (part = yield parts) {
     //     // filename for this part
     //     savedFile = uuid + '/' + part.filename;
+    //     console.log(savedFile);
     //     files.push(file = path.join(tmpdir, part.filename));
     //     // save the file
     //     yield saveTo(part, file);
