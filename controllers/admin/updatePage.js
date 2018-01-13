@@ -1,18 +1,17 @@
 'use strict';
 var parse = require('co-body');
 const helpers = require('../../lib/helpers');
+const Promise = require("bluebird");
+const Page = require('../../models/page');
 
 module.exports = function *() {
 
   let ret = { 'status': 200, 'test': 'OK' };
   let data = yield parse(this);
-  console.log(data);
-  //
-  // if (data.email != config.email || data.password != config.password) {
-  //   ret = {"status": 500, 'text': 'Емейл або пароль не вірні'};
-  // } else {
-  //   const cookies = this.cookies.get('sonyachniy-session');
-  //   if (!cookies && cookies != config.authToken) this.cookies.set('sonyachniy-session', config.authToken);
-  // }
+  data = helpers.convertToObject(data);
+
+  data.updated = new Date();
+  yield Promise.promisify(Page.findOneAndUpdate, {context: Page})({'page': data.page}, data);
+
   this.body = yield ret;
 };

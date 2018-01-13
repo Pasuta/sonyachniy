@@ -5,9 +5,7 @@ const Page = Promise.promisifyAll(require('../../models/page'));
 
 module.exports = function *(page) {
 
-    // const doc = yield Page.findOneAsync({ 'uri': page });
-    const doc = yield Promise.promisify(Page.findOne, {context: Page})({'uri': page});
-    console.log(doc);
+    const doc = yield Promise.promisify(Page.findOne, {context: Page})({'page': page});
     if (!doc) {
         this.type = 'html';
         this.body = yield render.site('404', { });

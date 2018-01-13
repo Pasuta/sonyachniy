@@ -47,11 +47,19 @@
 
   {% include "./header.html" %}
 
+  <input id="textLeftInput" name="page" value="{{doc.textLeft}}" type="hidden">
+  <input id="textRightInput" name="page" value="{{doc.textRight}}" type="hidden">
+
   {% block content %}
     <p>Missing content!</p>
   {% endblock %}
 
   <a href="#" class="scrollToTop"></a>
+
+  <script>
+      $("#textLeft").append( $.parseHTML( document.getElementById('textLeftInput').value ) );
+      $("#textRight").append( $.parseHTML( document.getElementById('textRightInput').value ) );
+  </script>
 
 </div>
 

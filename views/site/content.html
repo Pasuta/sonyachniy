@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<main>
+
+    <section class="well well2 bg1">
+        <div class="container">
+            <h2>
+                {{doc.title}}
+            </h2>
+            <br>
+            <div class="col-md-6 col-sm-12 ti" id="textLeft"></div>
+            <div class="col-md-6 col-sm-12 ti" id="textRight"></div>
+        </div>
+
+        <br>
+        <div class="container">
+            {% if doc.page == 'jobs' %}
+                <a href="/download/form.docx" download>
+                    <img border="0" src="/site/images/doc.png" alt="form" width="200" height="200">
+                </a>
+            {% endif %}
+        </div>
+    </section>
+
+    <footer class="top-border">
+        <section class="well1">
+            <div class="container">
+                <p class="rights">
+                    Всі права захищені  &#169; <span id="copyright-year"></span>
+                    <a rel="nofollow" href="http://sonyachniy.com.ua" target="_blank">sonyachniy.com.ua</a>
+                </p>
+            </div>
+        </section>
+    </footer>
+
+</main>
+
+{% endblock %}
