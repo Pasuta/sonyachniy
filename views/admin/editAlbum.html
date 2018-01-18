@@ -46,11 +46,9 @@
                                     <h3 class="panel-title">Upload photo</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <form action="/admin/media/uploadMedia" id="uploadPhoto" method="post">
-                                        <div class="fallback">
-                                            <input name="file" type="file" multiple />
-                                        </div>
-                                        <button>Upload</button>
+                                    <form id="uploadPhoto" action="/admin/media/uploadMedia" method="post" enctype="multipart/form-data">
+                                        <input type="file" id="input" name="file" multiple>
+                                        <input type="submit" value="Upload">
                                     </form>
                                 </div>
                             </div>
@@ -89,28 +87,9 @@
 <script src="/admin/js/pages/form-elements.js"></script>
 <!--<script src="/admin/plugins/dropzone/dropzone.min.js"></script>-->
 <!--<script src="/admin/plugins/dropzone/dz.js"></script>-->
+<script src="/admin/js/upload.js"></script>
 <script>
-    $(document).ready(function() {
-        $('.date-picker').datepicker("update", new Date($("#date").val()));
-    });
-//
-//    var uploadPhoto = document.getElementById('uploadPhoto');
-//    Event.add(uploadPhoto, 'submit', function (e) {
-//        e.preventDefault();
-//
-//        var formData = new FormData();
-//        var files = this.files;
-//        var name = this.name;
-//        for (var obj in files) {
-//            if(files.hasOwnProperty(obj) && typeof files[obj] == 'object'){
-//                formData.append(name, files[obj]);
-//            }
-//        }
-//
-//        console.log(formData);
-//        ajax('/admin/media/uploadMedia', formData, function(d) {
-//            console.log(d);
-//        });
-//    })
+
+
 </script>
 {% endblock %}
