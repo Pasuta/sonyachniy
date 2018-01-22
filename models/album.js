@@ -1,7 +1,6 @@
 'use strict';
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
-const configurator = require('../modules/configurator');
 
 let AlbumSchema = new Schema({
   title: String,

@@ -12,21 +12,11 @@
     <div class="camera_container">
       <div id="camera" class="camera_wrap">
 
-        <div data-src="/site/images/main/1.jpg">
-          <div class="camera_caption fadeIn"></div>
-        </div>
-
-        <div data-src="/site/images/main/2.jpg">
-          <div class="camera_caption fadeIn"></div>
-        </div>
-
-        <div data-src="/site/images/main/3.jpg">
-          <div class="camera_caption fadeIn"></div>
-        </div>
-
-        <div data-src="/site/images/main/4.jpg">
-          <div class="camera_caption fadeIn"></div>
-        </div>
+        {% for x, image in images %}
+          <div data-src="{{image.path}}">
+            <div class="camera_caption fadeIn"></div>
+          </div>
+        {% endfor %}
 
       </div>
     </div>
