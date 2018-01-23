@@ -14,7 +14,9 @@ module.exports = function(app) {
     app.use(route.get('/admin/logout', require('../controllers/admin/auth/logout')));
 
     app.use(route.get('/admin/slider', require('../controllers/admin/slider/slider')));
+    app.use(route.get('/admin/job/jobform', require('../controllers/admin/job/index')));
 
+    app.use(route.post('/admin/job/upload', require('../controllers/admin/job/upload')));
     app.use(route.post('/admin/updatePage', require('../controllers/admin/updatePage')));
 
     app.use(route.post('/admin/login', require('../controllers/admin/auth/login')));
