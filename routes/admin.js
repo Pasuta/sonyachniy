@@ -1,9 +1,7 @@
 'use strict';
 const route = require('koa-route');
-// const auth = require('../middlewares/auth');
 
 module.exports = function(app) {
-    app.use(route.get('/admin/test', require('../controllers/admin/test')));
     app.use(route.get('/admin/login', require('../controllers/admin/login')));
     app.use(route.get('/admin', require('../controllers/admin/index')));
     app.use(route.get('/admin/media', require('../controllers/admin/media/media')));
@@ -15,6 +13,8 @@ module.exports = function(app) {
 
     app.use(route.get('/admin/slider', require('../controllers/admin/slider/slider')));
     app.use(route.get('/admin/job/jobform', require('../controllers/admin/job/index')));
+
+    app.use(route.get('/admin/photoIndex/index', require('../controllers/admin/photoIndex/index')));
 
     app.use(route.post('/admin/job/upload', require('../controllers/admin/job/upload')));
     app.use(route.post('/admin/updatePage', require('../controllers/admin/updatePage')));
@@ -29,4 +29,8 @@ module.exports = function(app) {
     app.use(route.post('/admin/media/uploadSlider', require('../controllers/admin/slider/uploadSlider')));
     app.use(route.post('/admin/media/removeSliderElement', require('../controllers/admin/slider/removeSliderElement')));
     app.use(route.post('/admin/media/orderSliderElement', require('../controllers/admin/slider/orderSliderElement')));
+
+    app.use(route.post('/admin/photoIndex/uploadPhotoIndex', require('../controllers/admin/photoIndex/uploadPhotoIndex')));
+    app.use(route.post('/admin/photoIndex/removePhotoIndexElement', require('../controllers/admin/photoIndex/removePhotoIndexElement')));
+    app.use(route.post('/admin/photoIndex/dataPhotoIndexElement', require('../controllers/admin/photoIndex/dataPhotoIndexElement')));
 };

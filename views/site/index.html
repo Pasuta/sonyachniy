@@ -2,10 +2,6 @@
 
 {% block content %}
 
-<!--========================================================
-                          CONTENT
-=========================================================-->
-
 <main>
 
   <section class="well well1 well1_ins1">
@@ -24,125 +20,126 @@
 
   <section class="well well2 wow fadeIn  bg1" data-wow-duration='3s'>
     <div class="container">
-      <h3 class="txt-pr" style="text-align: center">
-        Комфорт дитини -
-        <small style="color: black">
-          важлива складова відпочинку і ми приділяємо цьому максимум уваги.
-        </small>
-      </h3>
-
-      <br>
-      <h6 style="text-transform: none; font-weight: normal">
-        Представляємо ВАМ дитячий оздоровчий табір «Сонячний», табір в якому кожна дитина -
-        головний герой! «Сонячний» - це унікальний табір, створений для дітей, табір який дарує нових
-        друзів, нові знання, змінює світогляд, виховує особистість, а головне дарує незабутні спогади про
-        щасливе дитинство кожного дитині, яка хоч раз провела тут частинку свого життя!
-      </h6>
+        <div id="textLeft"></div>
     </div>
   </section>
 
   <br><br>
 
-  <section class="well well3 parallax" data-url="/site/images/about23.jpg" data-mobile="true" data-speed="0.9">
-    <div class="container">
-      <div class="wrap text-center">
-        <strong>
-          Про нас
-          <small>
-            &nbsp;
-          </small>
-        </strong>
-        <a href="/content/about" class="btn btn-primary">Переглянуту детальніше<span class="fa-angle-right"></span></a>
+  {% for x, phImages in photoIndexImages %}
+    <section class="well well3 parallax" data-url="{{phImages.path}}" data-mobile="true" data-speed="0.9">
+      <div class="container">
+        <div class="wrap text-center">
+          <strong>{{phImages.title}}</strong>
+          <div style="color: #ffffff !important; text-shadow: 0 0 10px black;">{{phImages.text}}</div>
+          <a href="{{phImages.link}}" class="btn btn-primary">Переглянуту детальніше<span class="fa-angle-right"></span></a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <br><br>
+    <br><br>
+  {% endfor %}
 
-  <section class="well well3 parallax" data-url="/site/images/eating2.jpg" data-mobile="true" data-speed="0.9">
-    <div class="container">
-      <div class="wrap text-center">
-        <strong>
-          Харчування
-        </strong>
-        <ul>
-          <li>- у таборі діти їдять 5 разів на день;</li>
-          <li>- якість продуктів харчування постійно контролюється;</li>
-          <li>- їдальню обслуговує команда професіоналів;</li>
-          <li>- сучасне професійне обладнання;</li>
-          <li>- в їдальні завжди чисто</li>
-        </ul>
-        <a href="/content/eating" class="btn btn-primary">Переглянуту детальніше<span class="fa-angle-right"></span></a>
-      </div>
-    </div>
-  </section>
+  <!--<section class="well well3 parallax" data-url="/site/images/about23.jpg" data-mobile="true" data-speed="0.9">-->
+    <!--<div class="container">-->
+      <!--<div class="wrap text-center">-->
+        <!--<strong>-->
+          <!--Про нас-->
+          <!--<small>-->
+            <!--&nbsp;-->
+          <!--</small>-->
+        <!--</strong>-->
+        <!--<a href="/content/about" class="btn btn-primary">Переглянуту детальніше<span class="fa-angle-right"></span></a>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</section>-->
 
-  <br><br>
+  <!--<br><br>-->
 
-  <section class="well well3 parallax" data-url="/site/images/med2.jpg" data-mobile="true" data-speed="0.9">
-    <div class="container">
-      <div class="wrap text-center">
-        <strong>
-          Медичне обслуговування
-        </strong>
-        <a href="/content/medical" class="btn btn-primary">Переглянуту детальніше<span class="fa-angle-right"></span></a>
-      </div>
-    </div>
-  </section>
+  <!--<section class="well well3 parallax" data-url="/site/images/eating2.jpg" data-mobile="true" data-speed="0.9">-->
+    <!--<div class="container">-->
+      <!--<div class="wrap text-center">-->
+        <!--<strong>-->
+          <!--Харчування-->
+        <!--</strong>-->
+        <!--<ul>-->
+          <!--<li>- у таборі діти їдять 5 разів на день;</li>-->
+          <!--<li>- якість продуктів харчування постійно контролюється;</li>-->
+          <!--<li>- їдальню обслуговує команда професіоналів;</li>-->
+          <!--<li>- сучасне професійне обладнання;</li>-->
+          <!--<li>- в їдальні завжди чисто</li>-->
+        <!--</ul>-->
+        <!--<a href="/content/eating" class="btn btn-primary">Переглянуту детальніше<span class="fa-angle-right"></span></a>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</section>-->
 
-  <br><br>
+  <!--<br><br>-->
 
-  <section class="well well3 parallax" data-url="/site/images/parents2.png" data-mobile="true" data-speed="0.9">
-    <div class="container">
-      <div class="wrap text-center">
-        <strong>
-          Для батьків
-        </strong>
-        <ul style="color:white">
-          <li>- правила прийому дітей в табір;</li>
-          <li>- правила внутрішнього розпорядку;</li>
-          <li>- список рекомендованих речей;</li>
-          <li>- список продуктів і речей, які заборонено привозити в табір;</li>
-        </ul>
-        <a href="/content/common" class="btn btn-primary">Переглянуту детальніше<span class="fa-angle-right"></span></a>
-      </div>
-    </div>
-  </section>
+  <!--<section class="well well3 parallax" data-url="/site/images/med2.jpg" data-mobile="true" data-speed="0.9">-->
+    <!--<div class="container">-->
+      <!--<div class="wrap text-center">-->
+        <!--<strong>-->
+          <!--Медичне обслуговування-->
+        <!--</strong>-->
+        <!--<a href="/content/medical" class="btn btn-primary">Переглянуту детальніше<span class="fa-angle-right"></span></a>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</section>-->
 
-  <br><br>
+  <!--<br><br>-->
 
-  <section class="well well3 parallax" data-url="/site/images/team2.jpg" data-mobile="true" data-speed="0.9">
-    <div class="container">
-      <div class="wrap text-center">
-        <strong>
-          Вакансії
-        </strong>
-        <ul style="color:white">
-          <li>Якщо ти вже виріс, але дуже полюбляєш табір, вступай до нас в команду</li>
-        </ul>
-        <a href="/content/jobs" class="btn btn-primary">Переглянуту детальніше<span class="fa-angle-right"></span></a>
-      </div>
-    </div>
-  </section>
+  <!--<section class="well well3 parallax" data-url="/site/images/parents2.png" data-mobile="true" data-speed="0.9">-->
+    <!--<div class="container">-->
+      <!--<div class="wrap text-center">-->
+        <!--<strong>-->
+          <!--Для батьків-->
+        <!--</strong>-->
+        <!--<ul style="color:white">-->
+          <!--<li>- правила прийому дітей в табір;</li>-->
+          <!--<li>- правила внутрішнього розпорядку;</li>-->
+          <!--<li>- список рекомендованих речей;</li>-->
+          <!--<li>- список продуктів і речей, які заборонено привозити в табір;</li>-->
+        <!--</ul>-->
+        <!--<a href="/content/common" class="btn btn-primary">Переглянуту детальніше<span class="fa-angle-right"></span></a>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</section>-->
 
-  <br><br>
+  <!--<br><br>-->
 
-  <section class="well well3 parallax" data-url="/site/images/media2.jpg" data-mobile="true" data-speed="0.9">
-    <div class="container">
-      <div class="wrap text-center">
-        <strong>
-          Літо,
-          друзі,
-          <small>
-            річка та ліс
-          </small>
-        </strong>
-        <a href="/media" class="btn btn-primary">переглянути медіа<span class="fa-angle-right"></span></a>
-      </div>
-    </div>
-  </section>
+  <!--<section class="well well3 parallax" data-url="/site/images/team2.jpg" data-mobile="true" data-speed="0.9">-->
+    <!--<div class="container">-->
+      <!--<div class="wrap text-center">-->
+        <!--<strong>-->
+          <!--Вакансії-->
+        <!--</strong>-->
+        <!--<ul style="color:white">-->
+          <!--<li>Якщо ти вже виріс, але дуже полюбляєш табір, вступай до нас в команду</li>-->
+        <!--</ul>-->
+        <!--<a href="/content/jobs" class="btn btn-primary">Переглянуту детальніше<span class="fa-angle-right"></span></a>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</section>-->
 
-  <br><br>
+  <!--<br><br>-->
+
+  <!--<section class="well well3 parallax" data-url="/site/images/media2.jpg" data-mobile="true" data-speed="0.9">-->
+    <!--<div class="container">-->
+      <!--<div class="wrap text-center">-->
+        <!--<strong>-->
+          <!--Літо,-->
+          <!--друзі,-->
+          <!--<small>-->
+            <!--річка та ліс-->
+          <!--</small>-->
+        <!--</strong>-->
+        <!--<a href="/media" class="btn btn-primary">переглянути медіа<span class="fa-angle-right"></span></a>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</section>-->
+
+  <!--<br><br>-->
 
   <!--<section class="well well3 parallax" data-url="/site/images/soc.jpg" data-mobile="true" data-speed="0.9">-->
     <!--<div class="container">-->
