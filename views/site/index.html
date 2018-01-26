@@ -24,22 +24,6 @@
     </div>
   </section>
 
-  <br><br>
-
-  {% for x, phImages in photoIndexImages %}
-    <section class="well well3 parallax" data-url="{{phImages.path}}" data-mobile="true" data-speed="0.9">
-      <div class="container">
-        <div class="wrap text-center">
-          <strong>{{phImages.title}}</strong>
-          <div style="color: #ffffff !important; text-shadow: 0 0 10px black;">{{phImages.text}}</div>
-          <a href="{{phImages.link}}" class="btn btn-primary">Переглянуту детальніше<span class="fa-angle-right"></span></a>
-        </div>
-      </div>
-    </section>
-
-    <br><br>
-  {% endfor %}
-
   <!--<section class="well well3 parallax" data-url="/site/images/about23.jpg" data-mobile="true" data-speed="0.9">-->
     <!--<div class="container">-->
       <!--<div class="wrap text-center">-->
@@ -157,10 +141,25 @@
       <!--</div>-->
     <!--</div>-->
   <!--</section>-->
+
+  <br><br>
+
+  {% for x, phImages in photoIndexImages %}
+  <section class="well well3 parallax" data-url="{{phImages.path}}" data-mobile="true" data-speed="0.9">
+    <div class="container">
+      <div class="wrap text-center">
+        <strong>{{phImages.title}}</strong>
+        <input id="textInput{{x}}" value="{{phImages.text}}" type="hidden">
+        <div style="color: #ffffff !important; text-shadow: 0 0 10px black;" class="phText" id="phText{{x}}"></div>
+        <a href="{{phImages.link}}" class="btn btn-primary">Переглянуту детальніше<span class="fa-angle-right"></span></a>
+      </div>
+    </div>
+  </section>
+
+  <br><br>
+  {% endfor %}
+
   <br>
-  <!--========================================================
-                        FOOTER
-=========================================================-->
   <footer class="top-border">
 
     {% include "./map.html" %}
@@ -169,7 +168,6 @@
       <div class="container">
         <p class="rights">
             Всі права захищені  &#169; <span id="copyright-year"></span>
-          <!--<a rel="nofollow" href="http://www.makesoft.org/" target="_blank">Makesoft - We Develop your Future</a>-->
           <a rel="nofollow" href="http://sonyachniy.com.ua" target="_blank">sonyachniy.com.ua</a>
         </p>
       </div>
@@ -177,5 +175,14 @@
   </footer>
 
 </main>
+
+<script>
+    window.onload = function() {
+        var phText = document.getElementsByClassName('phText');
+        for (var i = 0; i < phText.length; i++) {
+            $("#phText" + i).append( $.parseHTML( document.getElementById('textInput' + i).value ) );
+        }
+    }
+</script>
 
 {% endblock %}

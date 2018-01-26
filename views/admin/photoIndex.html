@@ -2,6 +2,17 @@
 
 {% block content %}
 
+<style>
+    .photoIndexForm {
+        float:left;
+        width: 400px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+    .w400{
+        width: 400px
+    }
+</style>
 <div class="page-inner">
     <div class="page-title">
         <h3>Фото головна</h3>
@@ -15,21 +26,23 @@
                     </div>
                     <div class="panel-body">
                         {% for x, image in photoIndexImages %}
-                        <form style="float:left; width: 400px">
-                            <div style="width: 400px;height: 200px;background: url({{image.path}}) 50% 50% no-repeat;background-size: cover"></div>
-                            <p>Порядок</p>
-                            <input type="number" class="elOrder" value="{{image.order}}" style="width: 400px">
-                            <p>Заголовок</p>
-                            <input type="text" class="elTitle" name="title" value="{{image.title}}" style="width: 400px">
-                            <p>Посилання</p>
-                            <input type="text" class="elLink" name="link" value="{{image.link}}" style="width: 400px">
-                            <p>Текст</p>
-                            <textarea class="elText" name="elText" style="width: 400px;height: 200px">{{image.text}}</textarea>
-                            <input type="hidden" class="elId" value="{{image._id.toString()}}">
-                            <hr>
-                            <button class="remove">Видалити</button>
-                            <button class="save">Зберегти данні</button>
-                        </form>
+                            <form class="photoIndexForm">
+                                <div style="width: 400px;height: 200px;background: url({{image.path}}) 50% 50% no-repeat;background-size: cover"></div>
+                                <p>Порядок</p>
+                                <input type="number" class="elOrder w400" value="{{image.order}}">
+                                <p>Заголовок</p>
+                                <input type="text" class="elTitle w400" name="title" value="{{image.title}}">
+                                <p>Посилання</p>
+                                <input type="text" class="elLink w400" name="link" value="{{image.link}}">
+                                <p>Текст</p>
+                                <div class="w400 summernote elText" id="summernote{{x}}"></div>
+                                <input type="hidden" class="elId" value="{{image._id.toString()}}">
+                                <input type="hidden" class="x" value="{{x}}">
+                                <input id="textInput{{x}}" name="page" value="{{image.text}}" type="hidden">
+                                <hr>
+                                <button class="remove">Видалити</button>
+                                <button class="save">Зберегти данні</button>
+                            </form>
                         {% endfor %}
                     </div>
                 </div>
@@ -73,47 +86,49 @@
 <script src="/admin/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
 <script src="/admin/js/modern.min.js"></script>
 <script src="/admin/js/pages/form-elements.js"></script>
-<!--<script src="/admin/plugins/dropzone/dropzone.min.js"></script>-->
-<!--<script src="/admin/plugins/dropzone/dz.js"></script>-->
 <script src="/admin/js/uploadPhotoIndex.js"></script>
 
 <script>
-    var remove = document.getElementsByClassName('remove');
-    var save = document.getElementsByClassName('save');
-    for (var i = 0; i < remove.length; i++) {
-        Event.add(remove[i], 'click', removeEl);
+    window.onload = function() {
+        var remove = document.getElementsByClassName('remove');
+        var save = document.getElementsByClassName('save');
+        for (var i = 0; i < remove.length; i++) {
+            $('#summernote' + i).code(document.getElementById('textInput' + i).value);
+            Event.add(remove[i], 'click', removeEl);
+        }
+
+        for (var j = 0; j < save.length; j++) {
+            Event.add(save[j], 'click', saveOrder);
+        }
+
+        function removeEl(e) {
+            e.preventDefault();
+            var id = e.srcElement.parentNode.getElementsByClassName('elId')[0].value;
+
+            ajax('/admin/photoIndex/removePhotoIndexElement', {'id': id}, function (e) {
+                setTimeout(function () {
+                    console.log(e);
+                    window.location.reload();
+                }, 500);
+            })
+        }
+
+        function saveOrder(e) {
+            e.preventDefault();
+            var data = {};
+            data.id = e.srcElement.parentNode.getElementsByClassName('elId')[0].value;
+            data.order = e.srcElement.parentNode.getElementsByClassName('elOrder')[0].value;
+            data.title = e.srcElement.parentNode.getElementsByClassName('elTitle')[0].value;
+            data.link = e.srcElement.parentNode.getElementsByClassName('elLink')[0].value;
+            data.text = $('#summernote' + e.srcElement.parentNode.getElementsByClassName('x')[0].value).code();
+
+            ajax('/admin/photoIndex/dataPhotoIndexElement', data, function (e) {
+                setTimeout(function () {
+                    window.location.reload();
+                }, 500);
+            })
     }
 
-    for (var j = 0; j < save.length; j++) {
-        Event.add(save[j], 'click', saveOrder);
-    }
-
-    function removeEl(e) {
-        e.preventDefault();
-        var id = e.srcElement.parentNode.getElementsByClassName('elId')[0].value;
-
-        ajax('/admin/photoIndex/removePhotoIndexElement', {'id': id}, function (e) {
-            setTimeout(function () {
-                console.log(e);
-                window.location.reload();
-            }, 500);
-        })
-    }
-
-    function saveOrder(e) {
-        e.preventDefault();
-        var data = {};
-        data.id = e.srcElement.parentNode.getElementsByClassName('elId')[0].value;
-        data.order = e.srcElement.parentNode.getElementsByClassName('elOrder')[0].value;
-        data.title = e.srcElement.parentNode.getElementsByClassName('elTitle')[0].value;
-        data.link = e.srcElement.parentNode.getElementsByClassName('elLink')[0].value;
-        data.text = e.srcElement.parentNode.getElementsByClassName('elText')[0].value;
-
-        ajax('/admin/photoIndex/dataPhotoIndexElement', data, function (e) {
-            setTimeout(function () {
-                window.location.reload();
-            }, 500);
-        })
     }
 </script>
 
