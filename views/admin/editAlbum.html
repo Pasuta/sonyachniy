@@ -20,7 +20,7 @@
                         <h4 class="panel-title">Альбом</h4>
                     </div>
                     <div class="panel-body">
-                        <form method="POST" action="/admin/media/updateAlbumPost" enctype="multipart/form-data">
+                        <form method="POST" action="/admin/media/updateAlbumPost">
                             <div class="form-group">
                                 <label for="title" class="col-sm-2 control-label">Назва</label>
                                 <div class="col-sm-10">
@@ -41,12 +41,33 @@
                         </form>
 
                         <div class="col-md-12">
+
+                            <div class="panel panel-white">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"></h3>
+                                </div>
+                                <div class="panel-body">
+                                    {% for x, photo in photos %}
+                                    <form style="float:left; width: 400px">
+                                        <div style="width: 400px;height: 200px;background: url({{photo.path}}) 50% 50% no-repeat;background-size: cover"></div>
+                                        <input type="number" class="elOrder" value="{{photo.order}}">
+                                        <input type="hidden" class="elId" value="{{photo._id.toString()}}">
+                                        <button class="remove">Видалити</button>
+                                        <button class="save">Зберегти порядок</button>
+                                    </form>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+
+
                             <div class="panel panel-white">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Upload photo</h3>
                                 </div>
                                 <div class="panel-body">
                                     <form id="uploadPhoto" action="/admin/media/uploadMedia" method="post" enctype="multipart/form-data">
+                                        <input type="hidden" name="album" id="album" value="{{album._id.toString()}}">
                                         <input type="file" id="input" name="file" multiple>
                                         <input type="submit" value="Upload">
                                     </form>
@@ -60,12 +81,9 @@
         </div><!-- Row -->
 
     </div><!-- Main Wrapper -->
-    <div class="page-footer">
-        <p class="no-s">2016 &copy; Сонячний</p>
-    </div>
+    {% include 'widget/footer.html' %}
 </div><!-- Page Inner -->
 
-<!-- Javascripts -->
 <script src="/admin/plugins/jquery/jquery-2.1.4.min.js"></script>
 <script src="/admin/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="/admin/plugins/pace-master/pace.min.js"></script>
@@ -85,11 +103,42 @@
 <script src="/admin/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
 <script src="/admin/js/modern.min.js"></script>
 <script src="/admin/js/pages/form-elements.js"></script>
-<!--<script src="/admin/plugins/dropzone/dropzone.min.js"></script>-->
-<!--<script src="/admin/plugins/dropzone/dz.js"></script>-->
 <script src="/admin/js/upload.js"></script>
+
 <script>
+    var remove = document.getElementsByClassName('remove');
+    var save = document.getElementsByClassName('save');
+    for (var i = 0; i < remove.length; i++) {
+        Event.add(remove[i], 'click', removeEl);
+    }
 
+    for (var j = 0; j < save.length; j++) {
+        Event.add(save[j], 'click', saveOrder);
+    }
 
+    function removeEl(e) {
+        e.preventDefault();
+        var id = e.srcElement.parentNode.getElementsByClassName('elId')[0].value;
+
+        ajax('/admin/media/removePhotoElement', {'id': id}, function (e) {
+            setTimeout(function () {
+                console.log(e);
+                window.location.reload();
+            }, 500);
+        })
+    }
+
+    function saveOrder(e) {
+        e.preventDefault();
+        var id = e.srcElement.parentNode.getElementsByClassName('elId')[0].value;
+        var order = e.srcElement.parentNode.getElementsByClassName('elOrder')[0].value;
+
+        ajax('/admin/media/orderPhotoElement', {'id': id, order: order}, function (e) {
+            setTimeout(function () {
+                console.log(e);
+                window.location.reload();
+            }, 500);
+        })
+    }
 </script>
 {% endblock %}

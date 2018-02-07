@@ -2,72 +2,41 @@
 
 {% block content %}
 
-<!--========================================================
-                          CONTENT
-=========================================================-->
-<style>
-  .numbers{
-    width: 990px;
-    margin: 10px auto;
-  }
-  .numbers a{
-    display: block;
-    float: left;
-    cursor: pointer;
-    width: 140px;
-    height: 50px;
-    border: 1px solid silver;
-    text-align: center;
-    line-height: 45px;
-    font-size: 20px;
-  }
-  .numbers a:hover{
-    font-size: 21px;
-  }
-</style>
-
 <main>
-  <div class="numbers">
-    <a href="/media?page=1">1</a>
-    <a href="/media?page=2">2</a>
-    <a href="/media?page=3">3</a>
-    <a href="/media?page=4">4</a>
-    <a href="/media?page=5">5</a>
-    <a href="/media?page=6">6</a>
-    <a href="/media?page=7">7</a>
-    <br style="clear: both">
-  </div>
 
-  {% for post in posts %}
-    <section style="height: 650px" class="well well3 parallax" data-url="/site/images/photo/{{page}}{{post}}.jpg" data-mobile="true" data-speed="0.7"></section>
-  {% endfor %}
+  <section class="well well4">
+    <div class="container">
+      <h2 class='offs5'>
+        Нашi
+        <small>
+          фото
+        </small>
+      </h2>
+      <div class="row offs3">
+        {% for x, album in albums %}
 
-
-  <div class="numbers">
-    <a href="/media?page=1">1</a>
-    <a href="/media?page=2">2</a>
-    <a href="/media?page=3">3</a>
-    <a href="/media?page=4">4</a>
-    <a href="/media?page=5">5</a>
-    <a href="/media?page=6">6</a>
-    <a href="/media?page=7">7</a>
-    <br style="clear: both">
-  </div>
-  <!--========================================================
-                        FOOTER
-=========================================================-->
-  <footer class="top-border">
-
-    <section class="well1">
-      <div class="container">
-        <p class="rights">
-          Всі права захищені  &#169; <span id="copyright-year"></span>
-          <a rel="nofollow" href="http://www.makesoft.org/" target="_blank">Makesoft - We Develop your Future</a>
-        </p>
+          <div class="col-md-4 col-sm-12 col-xs-12">
+          <a class="thumb" data-fancybox-group='1' href="/album/{{album._id.toString()}}">
+            <img class="" src="{{album.preview.path}}" alt="">
+            <span class='thumb_overlay'></span>
+          </a>
+          <p class="lead">
+            {{album.title}}
+          </p>
+          <p class="ins767-1">
+            Дата проведення: {{album.time}}
+          </p>
+          <p class="ins767-1">
+            Кiлькiсть фото: {{album.count}} <a href="/album/{{album._id.toString()}}" class="btn-link l-h1 fa-angle-right"></a>
+          </p>
+        </div>
+        {% endfor %}
       </div>
-    </section>
-  </footer>
+    </div>
+  </section>
 
 </main>
+
+{% include "./footer.html" %}
 
 {% endblock %}

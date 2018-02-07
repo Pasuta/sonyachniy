@@ -11,6 +11,9 @@ Event.add(uploadPhoto, 'submit', function (e) {
         data.append('file-'+i, file);
     });
 
+    var album = document.getElementById('album').value;
+    data.append('album', album);
+
     jQuery.ajax({
         url: '/admin/media/uploadMedia',
         data: data,
@@ -19,6 +22,12 @@ Event.add(uploadPhoto, 'submit', function (e) {
         processData: false,
         method: 'POST',
         type: 'POST',
+        success:function(data){
+            setTimeout(function () {
+                console.log(data);
+                window.location.reload();
+            }, 500);
+        },
         error: function(data){
             console.log(data.responseJSON);
         }

@@ -22,9 +22,13 @@ module.exports = function(app) {
     app.use(route.post('/admin/login', require('../controllers/admin/auth/login')));
     app.use(route.post('/mail', require('../controllers/site/mail')));
     app.use(route.post('/upload/:name', require('../controllers/admin/upload')));
+
+    app.use(route.post('/admin/media/deleteAlbum', require('../controllers/admin/media/deleteAlbumPost')));
     app.use(route.post('/admin/media/createNewAlbumPost', require('../controllers/admin/media/createNewAlbumPost')));
     app.use(route.post('/admin/media/updateAlbumPost', require('../controllers/admin/media/updateAlbumPost')));
     app.use(route.post('/admin/media/uploadMedia', require('../controllers/admin/media/uploadMedia')));
+    app.use(route.post('/admin/media/removePhotoElement', require('../controllers/admin/media/removePhotoElement')));
+    app.use(route.post('/admin/media/orderPhotoElement', require('../controllers/admin/media/orderPhotoElement')));
 
     app.use(route.post('/admin/media/uploadSlider', require('../controllers/admin/slider/uploadSlider')));
     app.use(route.post('/admin/media/removeSliderElement', require('../controllers/admin/slider/removeSliderElement')));

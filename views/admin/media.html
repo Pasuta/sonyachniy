@@ -26,7 +26,6 @@
                                     <th>#</th>
                                     <th>Назва</th>
                                     <th>Кількість фото</th>
-                                    <th>Превью</th>
                                     <th>Редагувати</th>
                                     <th>Видалити</th>
                                 </tr>
@@ -36,10 +35,15 @@
                                 <tr>
                                     <th scope="row">{{x+1}}</th>
                                     <td>{{album.title}}</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td><a href="/admin/media/{{album.uri}}/edit">Редагувати &#94;</a></td>
-                                    <td><a href="/admin/media/{{album.uri}}/delete" style="color:red">Видалити &times;</a></td>
+                                    <td>{{album.count}}</td>
+                                    <td><a href="/admin/media/{{album.uri}}/edit">Редагувати</a></td>
+                                    <td>
+                                        <form method="POST" action="/admin/media/deleteAlbum">
+                                            <input type="hidden" value="{{album._id.toString()}}" name="id">
+                                            <button style="color:white; background: lightcoral;border: 1px solid silver; border-radius: 50px">
+                                                Видалити &times;
+                                            </button>
+                                        </form>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -50,12 +54,9 @@
         </div><!-- Row -->
 
     </div><!-- Main Wrapper -->
-    <div class="page-footer">
-        <p class="no-s">2016 &copy; Сонячний</p>
-    </div>
+    {% include 'widget/footer.html' %}
 </div><!-- Page Inner -->
 
-<!-- Javascripts -->
 <script src="/admin/plugins/jquery/jquery-2.1.4.min.js"></script>
 <script src="/admin/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="/admin/plugins/pace-master/pace.min.js"></script>
@@ -79,6 +80,5 @@
 <script src="/admin/plugins/curvedlines/curvedLines.js"></script>
 <script src="/admin/plugins/metrojs/MetroJs.min.js"></script>
 <script src="/admin/js/modern.min.js"></script>
-<script src="/admin/js/pages/dashboard.js"></script>
 
 {% endblock %}

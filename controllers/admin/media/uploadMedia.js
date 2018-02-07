@@ -5,29 +5,42 @@ const path = require('path');
 const fs = require('co-fs');
 const saveTo = require('save-to');
 const appDir = path.dirname(require.main.filename);
+const Promise = require("bluebird");
+const Photo = Promise.promisifyAll(require('../../../models/photo'));
+const filePath = path.join(appDir, 'public', 'site', 'images', 'media');
 
-module.exports = function *(name) {
-    let savedFile = '';
-    const uuid = uid();
-    const parts = parse(this, {
-        autoFields: true
-    });
+module.exports = function *() {
+    const parts = parse(this);
 
-    // list of all the files
     const files = [];
     let file;
+    let album;
 
-    // yield each part as a stream
     let part;
     while (part = yield parts) {
-        const tmpdir = path.join(appDir, 'media', uid());
+        if (!part.filename) {
+            album = part[1];
+            continue;
+        }
+        const uid = Math.random().toString(36).slice(2);
+        const imagePath = path.join('site', 'images', 'media', uid, part.filename);
+        const finalFilePlace = path.join(filePath, uid, part.filename);
+        const tmpdir = path.join(filePath, uid);
         yield fs.mkdir(tmpdir);
-        savedFile = uuid + '/' + part.filename;
-        files.push(file = path.join(tmpdir, part.filename));
-        yield saveTo(part, file);
+        files.push(file = imagePath);
+        yield saveTo(part, finalFilePlace);
     }
 
-    console.log(files);
+    for (let f in files) {
+        const d = {
+            'path': '/' + files[f],
+            _album: album,
+            'order': 0
+        };
+        const photo = new Photo(d);
+        const save = Promise.promisifyAll(photo);
+        yield save.saveAsync();
+    }
 
     this.body = yield {
         "status": "ok",
@@ -35,7 +48,3 @@ module.exports = function *(name) {
         "result": files
     };
 };
-
-function uid() {
-    return Math.random().toString(36).slice(2);
-}

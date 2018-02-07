@@ -1,11 +1,14 @@
 'use strict';
-let mongoose = require('mongoose');
-let Schema = mongoose.Schema;
-const configurator = require('../modules/configurator');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 let PhotoSchema = new Schema({
   order: Number,
-  _album : { type: Number, ref: 'Album' },
+  path: String,
+  _album : {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Album'
+  },
   date: { type: Date, default: Date.now }
 });
 

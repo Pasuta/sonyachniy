@@ -14,11 +14,8 @@ module.exports = function *() {
         autoFields: true
     });
 
-    // list of all the files
     const files = [];
-    let file;
 
-    // yield each part as a stream
     let part;
     while (part = yield parts) {
         const imagePath =  path.join(path.join('site', 'images', 'slider'), part.filename);
